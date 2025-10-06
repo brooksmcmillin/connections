@@ -1,0 +1,19 @@
+{
+  "name": "toddler-connections",
+  "version": "1.0.0",
+  "description": "A fun picture matching game for toddlers and young children",
+  "main": "index.js",
+  "scripts": {
+    "dev": "live-server --host=0.0.0.0 --port=8080 --open=/",
+    "start": "live-server --port=8080 --open=/",
+    "build": "echo 'No build process needed - ready to deploy!'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

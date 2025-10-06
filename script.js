@@ -1,0 +1,241 @@
+const allCategories = {
+    animals: {
+        icons: ['🐶', '🐱', '🐰', '🐸'],
+        title: '🐾 Animals',
+        color: '#FF6B6B'
+    },
+    food: {
+        icons: ['🍎', '🍌', '🍪', '🥛'],
+        title: '🍎 Yummy Food',
+        color: '#4ECDC4'
+    },
+    vehicles: {
+        icons: ['🚗', '🚂', '✈️', '🚲'],
+        title: '🚗 Things That Go',
+        color: '#45B7D1'
+    },
+    colors: {
+        icons: ['❤️', '💙', '💚', '💛'],
+        title: '🌈 Pretty Colors',
+        color: '#9C27B0'
+    },
+    weather: {
+        icons: ['☀️', '🌧️', '❄️', '☁️'],
+        title: '🌤️ Weather',
+        color: '#FF9800'
+    },
+    toys: {
+        icons: ['⚽', '🧸', '🎲', '🎈'],
+        title: '🎮 Fun Toys',
+        color: '#E91E63'
+    },
+    nature: {
+        icons: ['🌳', '🌸', '🍃', '🦋'],
+        title: '🌿 Nature',
+        color: '#4CAF50'
+    },
+    fruits: {
+        icons: ['🍓', '🍊', '🍇', '🍒'],
+        title: '🍓 Sweet Fruits',
+        color: '#FF5722'
+    },
+    ocean: {
+        icons: ['🐟', '🐙', '🦈', '🐚'],
+        title: '🌊 Ocean Friends',
+        color: '#00BCD4'
+    },
+    farm: {
+        icons: ['🐄', '🐷', '🐔', '🐴'],
+        title: '🚜 Farm Animals',
+        color: '#8BC34A'
+    },
+    sports: {
+        icons: ['⚽', '🏀', '🎾', '🏈'],
+        title: '⚽ Sports Balls',
+        color: '#607D8B'
+    },
+    space: {
+        icons: ['🌟', '🌙', '🚀', '🪐'],
+        title: '🚀 Space Things',
+        color: '#3F51B5'
+    }
+};
+
+let gameData = {};
+let selectedCards = [];
+let solvedGroups = [];
+let currentIcons = [];
+
+function shuffleArray(array) {
+    const newArray = [...array];
+    for (let i = newArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    }
+    return newArray;
+}
+
+function selectRandomCategories() {
+    const categoryNames = Object.keys(allCategories);
+    const shuffled = shuffleArray(categoryNames);
+    const selected = shuffled.slice(0, 3);
+
+    gameData = {};
+    selected.forEach(categoryName => {
+        gameData[categoryName] = allCategories[categoryName];
+    });
+
+    return selected;
+}
+
+function initializeGame() {
+    selectRandomCategories();
+
+    currentIcons = [];
+    Object.values(gameData).forEach(category => {
+        currentIcons = currentIcons.concat(category.icons);
+    });
+    currentIcons = shuffleArray(currentIcons);
+
+    selectedCards = [];
+    solvedGroups = [];
+
+    document.getElementById('gameGrid').innerHTML = '';
+
+    renderGrid();
+    updateFeedback('');
+    updateButtons();
+}
+
+function renderGrid() {
+    const grid = document.getElementById('gameGrid');
+    grid.innerHTML = '';
+
+    const completedCategories = [];
+    for (const [categoryName, category] of Object.entries(gameData)) {
+        if (category.icons.every(icon => {
+            const iconIndex = currentIcons.indexOf(icon);
+            return iconIndex !== -1 && solvedGroups.includes(iconIndex);
+        })) {
+            completedCategories.push(categoryName);
+        }
+    }
+
+    completedCategories.forEach(categoryName => {
+        const category = gameData[categoryName];
+        const categoryDiv = document.createElement('div');
+        categoryDiv.className = `completed-category ${categoryName}`;
+        categoryDiv.style.background = `linear-gradient(135deg, ${category.color}, ${darkenColor(category.color, 20)})`;
+        categoryDiv.innerHTML = `
+            <div>${category.title}</div>
+            <div class="icons">${category.icons.join(' ')}</div>
+        `;
+        grid.appendChild(categoryDiv);
+    });
+
+    currentIcons.forEach((icon, index) => {
+        if (!solvedGroups.includes(index)) {
+            const card = document.createElement('div');
+            card.className = 'icon-card';
+            card.textContent = icon;
+            card.onclick = () => selectCard(index, card);
+            card.dataset.index = index;
+            grid.appendChild(card);
+        }
+    });
+}
+
+function darkenColor(color, percent) {
+    const colorMap = {
+        '#FF6B6B': '#FF5252',
+        '#4ECDC4': '#26A69A',
+        '#45B7D1': '#2196F3',
+        '#9C27B0': '#7B1FA2',
+        '#FF9800': '#F57C00',
+        '#E91E63': '#C2185B',
+        '#4CAF50': '#388E3C',
+        '#FF5722': '#D84315',
+        '#00BCD4': '#0097A7',
+        '#8BC34A': '#689F38',
+        '#607D8B': '#455A64',
+        '#3F51B5': '#303F9F'
+    };
+    return colorMap[color] || color;
+}
+
+function selectCard(index, cardElement) {
+    if (solvedGroups.includes(index)) return;
+
+    const cardIndex = selectedCards.indexOf(index);
+
+    if (cardIndex > -1) {
+        selectedCards.splice(cardIndex, 1);
+        cardElement.classList.remove('selected');
+    } else if (selectedCards.length < 4) {
+        selectedCards.push(index);
+        cardElement.classList.add('selected');
+    }
+
+    updateButtons();
+}
+
+function updateButtons() {
+    const groupBtn = document.getElementById('groupBtn');
+    groupBtn.disabled = selectedCards.length !== 4;
+}
+
+function checkGroup() {
+    if (selectedCards.length !== 4) return;
+
+    const selectedIcons = selectedCards.map(index => currentIcons[index]);
+    let matchedCategory = null;
+
+    for (const [categoryName, category] of Object.entries(gameData)) {
+        if (selectedIcons.every(icon => category.icons.includes(icon))) {
+            matchedCategory = categoryName;
+            break;
+        }
+    }
+
+    if (matchedCategory) {
+        solvedGroups = solvedGroups.concat(selectedCards);
+        selectedCards = [];
+        updateFeedback('Great job! You found a group! 🎉', 'success');
+
+        setTimeout(() => {
+            renderGrid();
+        }, 500);
+
+        if (solvedGroups.length === 12) {
+            setTimeout(() => {
+                updateFeedback('Amazing! You found all the groups! 🏆🎊', 'success');
+            }, 1000);
+        }
+    } else {
+        updateFeedback('Not quite right. Try again! 💪', 'error');
+        setTimeout(() => updateFeedback(''), 2000);
+    }
+
+    clearSelection();
+}
+
+function clearSelection() {
+    selectedCards.forEach(index => {
+        const card = document.querySelector(`[data-index="${index}"]`);
+        if (card) card.classList.remove('selected');
+    });
+    selectedCards = [];
+    updateButtons();
+}
+
+function updateFeedback(message, type = '') {
+    const feedback = document.getElementById('feedback');
+    feedback.textContent = message;
+    feedback.className = `feedback ${type}`;
+}
+
+function newGame() {
+    initializeGame();
+}
+
+initializeGame();

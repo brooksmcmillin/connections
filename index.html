@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picture Connections for Little Ones</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>🌈 Picture Connections 🌈</h1>
+        <p class="subtitle">Find friends that go together!</p>
+        
+        <div class="game-grid" id="gameGrid">
+            <!-- Icons will be populated by JavaScript -->
+        </div>
+        
+        <div class="controls">
+            <button class="btn" id="groupBtn" onclick="checkGroup()" disabled>
+                Make a Group! ✨
+            </button>
+            <button class="btn" id="clearBtn" onclick="clearSelection()">
+                Clear Selection
+            </button>
+        </div>
+        
+        <div class="feedback" id="feedback"></div>
+        
+
+        
+        <button class="btn new-game-btn" onclick="newGame()">
+            🎮 New Game 🎮
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
