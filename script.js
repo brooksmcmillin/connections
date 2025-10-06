@@ -58,6 +58,31 @@ const allCategories = {
         icons: ['🌟', '🌙', '🚀', '🪐'],
         title: '🚀 Space Things',
         color: '#3F51B5'
+    },
+    clothing: {
+        icons: ['👕', '👗', '👒', '👟'],
+        title: '👕 Things to Wear',
+        color: '#FF7043'
+    },
+    faces: {
+        icons: ['😊', '😢', '😴', '😮'],
+        title: '😊 Happy Faces',
+        color: '#FFC107'
+    },
+    bugs: {
+        icons: ['🐛', '🦋', '🐝', '🐞'],
+        title: '🐛 Little Bugs',
+        color: '#795548'
+    },
+    buildings: {
+        icons: ['🏠', '🏢', '🏰', '⛪'],
+        title: '🏠 Places to Go',
+        color: '#607D8B'
+    },
+    tools: {
+        icons: ['🔨', '✂️', '🔧', '📏'],
+        title: '🔨 Helper Tools',
+        color: '#9E9E9E'
     }
 };
 
@@ -158,7 +183,11 @@ function darkenColor(color, percent) {
         '#00BCD4': '#0097A7',
         '#8BC34A': '#689F38',
         '#607D8B': '#455A64',
-        '#3F51B5': '#303F9F'
+        '#3F51B5': '#303F9F',
+        '#FF7043': '#E64A19',
+        '#FFC107': '#FF8F00',
+        '#795548': '#5D4037',
+        '#9E9E9E': '#757575'
     };
     return colorMap[color] || color;
 }

@@ -2,14 +2,17 @@ body {
     font-family: 'Comic Sans MS', cursive, sans-serif;
     background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
     margin: 0;
-    padding: 20px;
+    padding: 10px;
     min-height: 100vh;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .game-container {
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
+    padding: 0 5px;
 }
 
 h1 {
@@ -137,4 +140,152 @@ h1 {
 
 .new-game-btn:hover {
     background: #7B1FA2;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 5px;
+    }
+
+    .game-container {
+        padding: 0;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 5px;
+        line-height: 1.2;
+    }
+
+    .subtitle {
+        font-size: 1em;
+        margin-bottom: 15px;
+    }
+
+    .game-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin: 15px 0;
+        padding: 10px;
+        border-radius: 15px;
+    }
+
+    .icon-card {
+        padding: 12px;
+        font-size: 2.2em;
+        border-radius: 12px;
+        border-width: 2px;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .icon-card:hover {
+        transform: none;
+    }
+
+    .icon-card:active {
+        transform: scale(0.95);
+    }
+
+    .completed-category {
+        padding: 15px;
+        border-radius: 12px;
+        font-size: 1em;
+        margin-bottom: 8px;
+    }
+
+    .completed-category .icons {
+        font-size: 1.5em;
+        margin-top: 8px;
+        gap: 10px;
+    }
+
+    .controls {
+        margin: 15px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 1em;
+        border-radius: 20px;
+        margin: 0;
+        width: auto;
+        min-width: 200px;
+        max-width: 90%;
+    }
+
+    .btn:hover {
+        transform: none;
+    }
+
+    .btn:active {
+        transform: scale(0.98);
+    }
+
+    .feedback {
+        margin: 15px 0;
+        font-size: 1.1em;
+        min-height: 25px;
+        padding: 0 10px;
+    }
+
+    .new-game-btn {
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .subtitle {
+        font-size: 0.9em;
+    }
+
+    .game-grid {
+        gap: 6px;
+        padding: 8px;
+    }
+
+    .icon-card {
+        padding: 8px;
+        font-size: 1.8em;
+        min-height: 50px;
+    }
+
+    .btn {
+        font-size: 0.9em;
+        padding: 10px 20px;
+        min-width: 180px;
+    }
+
+    .feedback {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 360px) {
+    .icon-card {
+        font-size: 1.6em;
+        padding: 6px;
+        min-height: 45px;
+    }
+
+    .game-grid {
+        gap: 4px;
+        padding: 6px;
+    }
+
+    .btn {
+        min-width: 160px;
+        font-size: 0.85em;
+    }
 }
