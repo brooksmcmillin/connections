@@ -83,6 +83,31 @@ const allCategories = {
         icons: ['🔨', '✂️', '🔧', '📏'],
         title: '🔨 Helper Tools',
         color: '#9E9E9E'
+    },
+    music: {
+        icons: ['🎵', '🎸', '🎹', '🥁'],
+        title: '🎵 Music Time',
+        color: '#E040FB'
+    },
+    sweets: {
+        icons: ['🍭', '🍩', '🧁', '🍰'],
+        title: '🍭 Sweet Treats',
+        color: '#F06292'
+    },
+    birds: {
+        icons: ['🦆', '🦅', '🦉', '🦜'],
+        title: '🦆 Flying Birds',
+        color: '#42A5F5'
+    },
+    vegetables: {
+        icons: ['🥕', '🥦', '🌽', '🍅'],
+        title: '🥕 Healthy Veggies',
+        color: '#66BB6A'
+    },
+    hands: {
+        icons: ['👍', '✋', '👏', '✌️'],
+        title: '✋ Hand Signs',
+        color: '#FFB74D'
     }
 };
 
@@ -187,7 +212,12 @@ function darkenColor(color, percent) {
         '#FF7043': '#E64A19',
         '#FFC107': '#FF8F00',
         '#795548': '#5D4037',
-        '#9E9E9E': '#757575'
+        '#9E9E9E': '#757575',
+        '#E040FB': '#AB47BC',
+        '#F06292': '#D81B60',
+        '#42A5F5': '#1976D2',
+        '#66BB6A': '#388E3C',
+        '#FFB74D': '#F57C00'
     };
     return colorMap[color] || color;
 }

@@ -1,6 +1,6 @@
 body {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+    font-family: Arial, Helvetica, sans-serif;
+    background: #000000;
     margin: 0;
     padding: 10px;
     min-height: 100vh;
@@ -16,14 +16,14 @@ body {
 }
 
 h1 {
-    color: #333;
+    color: #ffffff;
     font-size: 2.5em;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .subtitle {
-    color: #666;
+    color: #cccccc;
     font-size: 1.2em;
     margin-bottom: 30px;
 }
@@ -34,7 +34,7 @@ h1 {
     gap: 15px;
     margin: 30px 0;
     padding: 20px;
-    background: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1);
     border-radius: 20px;
     backdrop-filter: blur(10px);
 }
@@ -90,9 +90,11 @@ h1 {
 }
 
 .icon-card.selected {
-    border-color: #4CAF50;
-    background: #e8f5e8;
-    transform: scale(1.05);
+    border-color: #FFD700;
+    border-width: 5px;
+    background: #FFF9C4;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
 }
 
 .controls {
@@ -100,7 +102,6 @@ h1 {
 }
 
 .btn {
-    background: #4CAF50;
     color: white;
     border: none;
     padding: 15px 30px;
@@ -110,17 +111,44 @@ h1 {
     margin: 0 10px;
     transition: all 0.3s ease;
     font-family: inherit;
+    font-weight: bold;
 }
 
 .btn:hover {
-    background: #45a049;
     transform: translateY(-2px);
 }
 
 .btn:disabled {
-    background: #ccc;
+    background: #666 !important;
     cursor: not-allowed;
     transform: none;
+}
+
+/* "Make a Group" button - Blue */
+#groupBtn {
+    background: #2196F3;
+}
+
+#groupBtn:hover:not(:disabled) {
+    background: #1976D2;
+}
+
+/* "Clear Selection" button - Orange */
+#clearBtn {
+    background: #FF9800;
+}
+
+#clearBtn:hover {
+    background: #F57C00;
+}
+
+/* "New Game" button - Purple (keeping it distinct) */
+.new-game-btn {
+    background: #9C27B0;
+}
+
+.new-game-btn:hover {
+    background: #7B1FA2;
 }
 
 .feedback {
@@ -132,15 +160,6 @@ h1 {
 
 .success { color: #4CAF50; }
 .error { color: #f44336; }
-
-.new-game-btn {
-    background: #9C27B0;
-    margin-top: 20px;
-}
-
-.new-game-btn:hover {
-    background: #7B1FA2;
-}
 
 /* Mobile Responsive Design */
 @media (max-width: 768px) {
@@ -204,21 +223,22 @@ h1 {
     }
 
     .controls {
-        margin: 15px 0;
+        margin: 20px 0;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 20px;
         align-items: center;
     }
 
     .btn {
-        padding: 12px 25px;
-        font-size: 1em;
-        border-radius: 20px;
+        padding: 20px 35px;
+        font-size: 1.3em;
+        border-radius: 30px;
         margin: 0;
         width: auto;
-        min-width: 200px;
+        min-width: 280px;
         max-width: 90%;
+        min-height: 70px;
     }
 
     .btn:hover {
@@ -237,7 +257,8 @@ h1 {
     }
 
     .new-game-btn {
-        margin-top: 15px;
+        margin-top: 30px;
+        min-height: 70px;
     }
 }
 
@@ -262,9 +283,10 @@ h1 {
     }
 
     .btn {
-        font-size: 0.9em;
-        padding: 10px 20px;
-        min-width: 180px;
+        font-size: 1.2em;
+        padding: 18px 30px;
+        min-width: 260px;
+        min-height: 65px;
     }
 
     .feedback {
@@ -285,7 +307,8 @@ h1 {
     }
 
     .btn {
-        min-width: 160px;
-        font-size: 0.85em;
+        min-width: 240px;
+        font-size: 1.1em;
+        min-height: 60px;
     }
 }
