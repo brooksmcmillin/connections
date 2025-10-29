@@ -1,3 +1,36 @@
+// Load and apply custom button colors from localStorage
+function applyCustomButtonColors() {
+    const savedColors = localStorage.getItem('buttonColors');
+    if (savedColors) {
+        try {
+            const colors = JSON.parse(savedColors);
+
+            const groupBtn = document.getElementById('groupBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const newGameBtn = document.querySelector('.new-game-btn');
+
+            if (groupBtn && colors.groupBtn) {
+                groupBtn.style.background = colors.groupBtn;
+            }
+            if (clearBtn && colors.clearBtn) {
+                clearBtn.style.background = colors.clearBtn;
+            }
+            if (newGameBtn && colors.newGameBtn) {
+                newGameBtn.style.background = colors.newGameBtn;
+            }
+        } catch (e) {
+            console.error('Error applying custom colors:', e);
+        }
+    }
+}
+
+// Apply custom colors when DOM is loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyCustomButtonColors);
+} else {
+    applyCustomButtonColors();
+}
+
 const allCategories = {
     animals: {
         icons: ['🐶', '🐱', '🐰', '🐸'],

@@ -124,13 +124,13 @@ h1 {
     transform: none;
 }
 
-/* "Make a Group" button - Blue */
+/* "Make a Group" button - Red */
 #groupBtn {
-    background: #2196F3;
+    background: red;
 }
 
 #groupBtn:hover:not(:disabled) {
-    background: #1976D2;
+    background: #cc0000;
 }
 
 /* "Clear Selection" button - Orange */
@@ -142,13 +142,13 @@ h1 {
     background: #F57C00;
 }
 
-/* "New Game" button - Purple (keeping it distinct) */
+/* "New Game" button - Blue */
 .new-game-btn {
-    background: #9C27B0;
+    background: blue;
 }
 
 .new-game-btn:hover {
-    background: #7B1FA2;
+    background: #0000cc;
 }
 
 .feedback {

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Admin Settings - Button Colors</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #000000;
+            margin: 0;
+            padding: 10px;
+            min-height: 100vh;
+        }
+
+        .admin-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 2em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .subtitle {
+            color: #cccccc;
+            font-size: 1em;
+            margin-bottom: 30px;
+        }
+
+        .settings-panel {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .color-setting {
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+        }
+
+        .color-setting label {
+            display: block;
+            color: #ffffff;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .color-input-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        input[type="color"] {
+            width: 80px;
+            height: 80px;
+            border: 3px solid #ffffff;
+            border-radius: 10px;
+            cursor: pointer;
+            background: none;
+        }
+
+        input[type="text"] {
+            width: 120px;
+            padding: 10px 15px;
+            font-size: 1em;
+            border: 2px solid #ffffff;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.9);
+            text-align: center;
+        }
+
+        .preview-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+        }
+
+        .preview-section h3 {
+            color: #ffffff;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+
+        .preview-button {
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            margin: 10px;
+            font-family: inherit;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .action-buttons {
+            margin: 30px 0;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-save {
+            background: #4CAF50;
+        }
+
+        .btn-save:hover {
+            background: #388E3C;
+        }
+
+        .btn-reset {
+            background: #f44336;
+        }
+
+        .btn-reset:hover {
+            background: #c62828;
+        }
+
+        .btn-back {
+            background: #2196F3;
+        }
+
+        .btn-back:hover {
+            background: #1565C0;
+        }
+
+        .message {
+            color: #4CAF50;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 15px 0;
+            min-height: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .admin-container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .settings-panel {
+                padding: 20px 15px;
+            }
+
+            input[type="color"] {
+                width: 60px;
+                height: 60px;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <h1>⚙️ Admin Settings ⚙️</h1>
+        <p class="subtitle">Customize Button Colors</p>
+
+        <div class="settings-panel">
+            <div class="color-setting">
+                <label>Make a Group Button ✨</label>
+                <div class="color-input-group">
+                    <input type="color" id="groupBtnColor" value="#ff0000">
+                    <input type="text" id="groupBtnText" value="#ff0000" readonly>
+                </div>
+            </div>
+
+            <div class="color-setting">
+                <label>Clear Selection Button</label>
+                <div class="color-input-group">
+                    <input type="color" id="clearBtnColor" value="#FF9800">
+                    <input type="text" id="clearBtnText" value="#FF9800" readonly>
+                </div>
+            </div>
+
+            <div class="color-setting">
+                <label>New Game Button 🎮</label>
+                <div class="color-input-group">
+                    <input type="color" id="newGameBtnColor" value="#0000ff">
+                    <input type="text" id="newGameBtnText" value="#0000ff" readonly>
+                </div>
+            </div>
+
+            <div class="preview-section">
+                <h3>Button Preview</h3>
+                <div>
+                    <button class="preview-button" id="previewGroupBtn">Make a Group! ✨</button>
+                </div>
+                <div>
+                    <button class="preview-button" id="previewClearBtn">Clear Selection</button>
+                </div>
+                <div>
+                    <button class="preview-button" id="previewNewGameBtn">🎮 New Game 🎮</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="message" id="message"></div>
+
+        <div class="action-buttons">
+            <button class="btn btn-save" onclick="saveColors()">💾 Save Colors</button>
+            <button class="btn btn-reset" onclick="resetColors()">🔄 Reset to Defaults</button>
+            <a href="index.html" class="btn btn-back">⬅️ Back to Game</a>
+        </div>
+    </div>
+
+    <script>
+        // Default colors
+        const defaultColors = {
+            groupBtn: '#ff0000',
+            clearBtn: '#FF9800',
+            newGameBtn: '#0000ff'
+        };
+
+        // Load saved colors or use defaults
+        function loadColors() {
+            const savedColors = localStorage.getItem('buttonColors');
+            let colors = defaultColors;
+
+            if (savedColors) {
+                try {
+                    colors = JSON.parse(savedColors);
+                } catch (e) {
+                    console.error('Error loading colors:', e);
+                }
+            }
+
+            // Set color pickers
+            document.getElementById('groupBtnColor').value = colors.groupBtn;
+            document.getElementById('groupBtnText').value = colors.groupBtn;
+            document.getElementById('clearBtnColor').value = colors.clearBtn;
+            document.getElementById('clearBtnText').value = colors.clearBtn;
+            document.getElementById('newGameBtnColor').value = colors.newGameBtn;
+            document.getElementById('newGameBtnText').value = colors.newGameBtn;
+
+            updatePreviews();
+        }
+
+        // Update preview buttons
+        function updatePreviews() {
+            const groupColor = document.getElementById('groupBtnColor').value;
+            const clearColor = document.getElementById('clearBtnColor').value;
+            const newGameColor = document.getElementById('newGameBtnColor').value;
+
+            document.getElementById('previewGroupBtn').style.background = groupColor;
+            document.getElementById('previewClearBtn').style.background = clearColor;
+            document.getElementById('previewNewGameBtn').style.background = newGameColor;
+        }
+
+        // Save colors to localStorage
+        function saveColors() {
+            const colors = {
+                groupBtn: document.getElementById('groupBtnColor').value,
+                clearBtn: document.getElementById('clearBtnColor').value,
+                newGameBtn: document.getElementById('newGameBtnColor').value
+            };
+
+            localStorage.setItem('buttonColors', JSON.stringify(colors));
+
+            showMessage('Colors saved successfully! 🎉');
+        }
+
+        // Reset to default colors
+        function resetColors() {
+            document.getElementById('groupBtnColor').value = defaultColors.groupBtn;
+            document.getElementById('groupBtnText').value = defaultColors.groupBtn;
+            document.getElementById('clearBtnColor').value = defaultColors.clearBtn;
+            document.getElementById('clearBtnText').value = defaultColors.clearBtn;
+            document.getElementById('newGameBtnColor').value = defaultColors.newGameBtn;
+            document.getElementById('newGameBtnText').value = defaultColors.newGameBtn;
+
+            updatePreviews();
+
+            localStorage.setItem('buttonColors', JSON.stringify(defaultColors));
+            showMessage('Colors reset to defaults! 🔄');
+        }
+
+        // Show message
+        function showMessage(text) {
+            const messageEl = document.getElementById('message');
+            messageEl.textContent = text;
+            setTimeout(() => {
+                messageEl.textContent = '';
+            }, 3000);
+        }
+
+        // Set up event listeners for color inputs
+        document.getElementById('groupBtnColor').addEventListener('input', function(e) {
+            document.getElementById('groupBtnText').value = e.target.value;
+            updatePreviews();
+        });
+
+        document.getElementById('clearBtnColor').addEventListener('input', function(e) {
+            document.getElementById('clearBtnText').value = e.target.value;
+            updatePreviews();
+        });
+
+        document.getElementById('newGameBtnColor').addEventListener('input', function(e) {
+            document.getElementById('newGameBtnText').value = e.target.value;
+            updatePreviews();
+        });
+
+        // Load colors on page load
+        loadColors();
+    </script>
+</body>
+</html>
