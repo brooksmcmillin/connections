@@ -68,7 +68,51 @@ newCategory: {
 }
 ```
 
-## 🚀 Deployment
+## 🐳 Docker Deployment
+
+### Quick Start with Docker Compose (Recommended)
+
+1. **Build and run the container:**
+   ```bash
+   docker-compose up -d
+   ```
+
+2. **Access the game:**
+   Open your browser to `http://localhost:8085`
+
+3. **Stop the container:**
+   ```bash
+   docker-compose down
+   ```
+
+### Using Docker Directly
+
+1. **Build the image:**
+   ```bash
+   docker build -t toddler-connections .
+   ```
+
+2. **Run the container:**
+   ```bash
+   docker run -d -p 8085:8085 --name toddler-connections-game toddler-connections
+   ```
+
+3. **Access the game:**
+   Open your browser to `http://localhost:8085`
+
+4. **Stop the container:**
+   ```bash
+   docker stop toddler-connections-game
+   docker rm toddler-connections-game
+   ```
+
+### Docker Features
+- **Lightweight**: Uses nginx-alpine for minimal image size
+- **Health checks**: Automatic container health monitoring
+- **Port 8085**: Consistent with the development server port
+- **Production-ready**: Optimized for deployment with gzip compression and caching
+
+## 🚀 Other Deployment Options
 
 ### GitHub Pages
 1. Push to GitHub repository

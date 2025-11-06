@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  toddler-connections:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: toddler-connections-game
+    ports:
+      - "8085:8085"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8085/"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+    labels:
+      - "com.example.description=Toddler Connections Picture Matching Game"
+      - "com.example.version=1.0.0"
