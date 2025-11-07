@@ -17,28 +17,7 @@ COPY . .
 FROM nginx:alpine
 
 # Copy custom nginx configuration
-COPY <<EOF /etc/nginx/conf.d/default.conf
-server {
-    listen 8085;
-    server_name localhost;
-    root /usr/share/nginx/html;
-    index index.html;
-
-    # Enable gzip compression
-    gzip on;
-    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
-
-    location / {
-        try_files \$uri \$uri/ /index.html;
-    }
-
-    # Cache static assets
-    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
-        expires 1y;
-        add_header Cache-Control "public, immutable";
-    }
-}
-EOF
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy static files from builder
 COPY --from=builder /app/*.html /usr/share/nginx/html/
