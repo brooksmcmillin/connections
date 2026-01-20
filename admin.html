@@ -134,22 +134,6 @@
             transform: translateY(-2px);
         }
 
-        .btn-save {
-            background: #4CAF50;
-        }
-
-        .btn-save:hover {
-            background: #388E3C;
-        }
-
-        .btn-reset {
-            background: #f44336;
-        }
-
-        .btn-reset:hover {
-            background: #c62828;
-        }
-
         .btn-back {
             background: #2196F3;
         }
@@ -238,8 +222,6 @@
         <div class="message" id="message"></div>
 
         <div class="action-buttons">
-            <button class="btn btn-save" onclick="saveColors()">💾 Save Colors</button>
-            <button class="btn btn-reset" onclick="resetColors()">🔄 Reset to Defaults</button>
             <a href="index.html" class="btn btn-back">⬅️ Back to Game</a>
         </div>
     </div>
@@ -297,22 +279,7 @@
 
             localStorage.setItem('buttonColors', JSON.stringify(colors));
 
-            showMessage('Colors saved successfully! 🎉');
-        }
-
-        // Reset to default colors
-        function resetColors() {
-            document.getElementById('groupBtnColor').value = defaultColors.groupBtn;
-            document.getElementById('groupBtnText').value = defaultColors.groupBtn;
-            document.getElementById('clearBtnColor').value = defaultColors.clearBtn;
-            document.getElementById('clearBtnText').value = defaultColors.clearBtn;
-            document.getElementById('newGameBtnColor').value = defaultColors.newGameBtn;
-            document.getElementById('newGameBtnText').value = defaultColors.newGameBtn;
-
-            updatePreviews();
-
-            localStorage.setItem('buttonColors', JSON.stringify(defaultColors));
-            showMessage('Colors reset to defaults! 🔄');
+            showMessage('Color saved!');
         }
 
         // Show message
@@ -325,20 +292,25 @@
         }
 
         // Set up event listeners for color inputs
+        // 'input' fires while dragging the color picker for live preview
+        // 'change' fires when the color picker is closed to auto-save
         document.getElementById('groupBtnColor').addEventListener('input', function(e) {
             document.getElementById('groupBtnText').value = e.target.value;
             updatePreviews();
         });
+        document.getElementById('groupBtnColor').addEventListener('change', saveColors);
 
         document.getElementById('clearBtnColor').addEventListener('input', function(e) {
             document.getElementById('clearBtnText').value = e.target.value;
             updatePreviews();
         });
+        document.getElementById('clearBtnColor').addEventListener('change', saveColors);
 
         document.getElementById('newGameBtnColor').addEventListener('input', function(e) {
             document.getElementById('newGameBtnText').value = e.target.value;
             updatePreviews();
         });
+        document.getElementById('newGameBtnColor').addEventListener('change', saveColors);
 
         // Load colors on page load
         loadColors();
