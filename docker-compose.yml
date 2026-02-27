@@ -4,8 +4,6 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: toddler-connections-game
-    ports:
-      - "8085:8085"
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8085/"]
@@ -13,6 +11,15 @@ services:
       timeout: 3s
       retries: 3
       start_period: 5s
+    networks:
+      - proxy
     labels:
-      - "com.example.description=Toddler Connections Picture Matching Game"
-      - "com.example.version=1.0.0"
+      - traefik.enable=true
+      - traefik.http.routers.connections.rule=Host(`connections.brooksmcmillin.com`)
+      - traefik.http.routers.connections.tls.certresolver=letsencrypt
+      - traefik.http.routers.connections.middlewares=security-headers@file
+      - traefik.http.services.connections.loadbalancer.server.port=8085
+
+networks:
+  proxy:
+    external: true
