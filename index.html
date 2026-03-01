@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Picture Connections for Little Ones</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Lilita+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="game-container">
         <h1>🌈 Picture Connections 🌈</h1>
         <p class="subtitle">Find friends that go together!</p>
-        
+
         <div class="game-grid" id="gameGrid">
             <!-- Icons will be populated by JavaScript -->
         </div>
-        
+
         <div class="controls">
             <button class="btn" id="groupBtn" onclick="checkGroup()" disabled>
                 Make a Group! ✨
@@ -23,17 +26,14 @@
                 Clear Selection
             </button>
         </div>
-        
-        <div class="feedback" id="feedback"></div>
-        
 
-        
+        <div class="feedback" id="feedback"></div>
+
         <button class="btn new-game-btn" onclick="newGame()">
             🎮 New Game 🎮
         </button>
 
-        <br />
-        <a href="admin.html" style="display: inline-block; margin-top: 20px; color: #888; text-decoration: none; font-size: 0.9em;">⚙️ Admin Settings</a>
+        <a href="admin.html" class="admin-link">⚙️ Admin Settings</a>
     </div>
 
     <script src="script.js"></script>

@@ -4,13 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Admin Settings - Button Colors</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Lilita+One&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --cream: #FFF5E9;
+            --warm-white: #FFFCF7;
+            --text-dark: #4A3728;
+            --text-soft: #8B7355;
+            --coral: #FF6B6B;
+            --sky: #5BB5E8;
+            --sky-dark: #3A94C8;
+            --border-warm: #F0E6D8;
+            --shadow-warm: rgba(180, 140, 100, 0.15);
+        }
+
+        * { box-sizing: border-box; }
+
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #000000;
+            font-family: 'Fredoka', sans-serif;
+            background: var(--cream);
             margin: 0;
             padding: 10px;
             min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(210, 170, 130, 0.12) 1.2px, transparent 1.2px);
+            background-size: 28px 28px;
+            pointer-events: none;
+            z-index: 0;
         }
 
         .admin-container {
@@ -18,154 +45,161 @@
             margin: 0 auto;
             text-align: center;
             padding: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         h1 {
-            color: #ffffff;
+            font-family: 'Lilita One', cursive;
+            color: var(--coral);
             font-size: 2em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 4px;
+            text-shadow: 3px 3px 0 rgba(74, 55, 40, 0.08);
+            letter-spacing: 1px;
         }
 
         .subtitle {
-            color: #cccccc;
-            font-size: 1em;
-            margin-bottom: 30px;
+            color: var(--text-soft);
+            font-size: 1.1em;
+            font-weight: 500;
+            margin-bottom: 24px;
         }
 
         .settings-panel {
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            padding: 30px;
+            background: rgba(255, 255, 255, 0.55);
+            border-radius: 24px;
+            border: 3px dashed rgba(200, 170, 140, 0.3);
+            box-shadow: 0 8px 30px rgba(180, 140, 100, 0.08);
+            padding: 28px;
             margin: 20px 0;
         }
 
         .color-setting {
-            margin: 25px 0;
-            padding: 20px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 15px;
+            margin: 20px 0;
+            padding: 18px;
+            background: var(--warm-white);
+            border: 2px solid var(--border-warm);
+            border-bottom: 4px solid #E8D5C0;
+            border-radius: 16px;
         }
 
         .color-setting label {
             display: block;
-            color: #ffffff;
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-bottom: 15px;
+            color: var(--text-dark);
+            font-size: 1.15em;
+            font-weight: 600;
+            margin-bottom: 14px;
         }
 
         .color-input-group {
             display: flex;
-            gap: 15px;
+            gap: 14px;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
         }
 
         input[type="color"] {
-            width: 80px;
-            height: 80px;
-            border: 3px solid #ffffff;
-            border-radius: 10px;
+            width: 72px;
+            height: 72px;
+            border: 3px solid var(--border-warm);
+            border-radius: 14px;
             cursor: pointer;
             background: none;
+            padding: 4px;
         }
 
         input[type="text"] {
             width: 120px;
-            padding: 10px 15px;
+            padding: 10px 14px;
+            font-family: 'Fredoka', sans-serif;
             font-size: 1em;
-            border: 2px solid #ffffff;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.9);
+            font-weight: 500;
+            border: 2px solid var(--border-warm);
+            border-radius: 12px;
+            background: white;
+            color: var(--text-dark);
             text-align: center;
         }
 
         .preview-section {
-            margin: 30px 0;
+            margin: 24px 0 0;
             padding: 20px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 15px;
+            background: var(--warm-white);
+            border: 2px solid var(--border-warm);
+            border-bottom: 4px solid #E8D5C0;
+            border-radius: 16px;
         }
 
         .preview-section h3 {
-            color: #ffffff;
-            font-size: 1.3em;
-            margin-bottom: 20px;
+            color: var(--text-dark);
+            font-size: 1.2em;
+            font-weight: 600;
+            margin: 0 0 16px;
         }
 
         .preview-button {
+            font-family: 'Fredoka', sans-serif;
             color: white;
             border: none;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            border-radius: 25px;
-            margin: 10px;
-            font-family: inherit;
-            font-weight: bold;
-            transition: all 0.3s ease;
+            padding: 14px 28px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border-radius: 50px;
+            margin: 8px;
+            letter-spacing: 0.3px;
         }
 
         .action-buttons {
-            margin: 30px 0;
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
+            margin: 28px 0;
         }
 
         .btn {
+            font-family: 'Fredoka', sans-serif;
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 16px 32px;
             font-size: 1.1em;
-            border-radius: 25px;
+            font-weight: 600;
+            border-radius: 50px;
             cursor: pointer;
-            font-family: inherit;
-            font-weight: bold;
-            transition: all 0.3s ease;
+            transition: all 0.15s ease;
             text-decoration: none;
             display: inline-block;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
+            letter-spacing: 0.3px;
         }
 
         .btn-back {
-            background: #2196F3;
+            background: var(--sky);
+            box-shadow: 0 6px 0 var(--sky-dark), 0 8px 16px rgba(91, 181, 232, 0.25);
         }
 
         .btn-back:hover {
-            background: #1565C0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 0 var(--sky-dark), 0 12px 20px rgba(91, 181, 232, 0.3);
+        }
+
+        .btn-back:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 var(--sky-dark), 0 4px 8px rgba(91, 181, 232, 0.15);
         }
 
         .message {
-            color: #4CAF50;
-            font-size: 1.2em;
-            font-weight: bold;
-            margin: 15px 0;
-            min-height: 30px;
+            color: #2DAA6E;
+            font-size: 1.15em;
+            font-weight: 600;
+            margin: 14px 0;
+            min-height: 28px;
         }
 
         @media (max-width: 768px) {
-            .admin-container {
-                padding: 10px;
-            }
-
-            h1 {
-                font-size: 1.5em;
-            }
-
-            .settings-panel {
-                padding: 20px 15px;
-            }
+            .admin-container { padding: 10px; }
+            h1 { font-size: 1.5em; }
+            .settings-panel { padding: 18px 14px; }
 
             input[type="color"] {
-                width: 60px;
-                height: 60px;
+                width: 56px;
+                height: 56px;
             }
 
             .btn {
@@ -227,14 +261,12 @@
     </div>
 
     <script>
-        // Default colors
         const defaultColors = {
             groupBtn: '#ff0000',
             clearBtn: '#FF9800',
             newGameBtn: '#0000ff'
         };
 
-        // Load saved colors or use defaults
         function loadColors() {
             const savedColors = localStorage.getItem('buttonColors');
             let colors = defaultColors;
@@ -247,7 +279,6 @@
                 }
             }
 
-            // Set color pickers
             document.getElementById('groupBtnColor').value = colors.groupBtn;
             document.getElementById('groupBtnText').value = colors.groupBtn;
             document.getElementById('clearBtnColor').value = colors.clearBtn;
@@ -258,7 +289,6 @@
             updatePreviews();
         }
 
-        // Update preview buttons
         function updatePreviews() {
             const groupColor = document.getElementById('groupBtnColor').value;
             const clearColor = document.getElementById('clearBtnColor').value;
@@ -269,7 +299,6 @@
             document.getElementById('previewNewGameBtn').style.background = newGameColor;
         }
 
-        // Save colors to localStorage
         function saveColors() {
             const colors = {
                 groupBtn: document.getElementById('groupBtnColor').value,
@@ -278,22 +307,15 @@
             };
 
             localStorage.setItem('buttonColors', JSON.stringify(colors));
-
             showMessage('Color saved!');
         }
 
-        // Show message
         function showMessage(text) {
             const messageEl = document.getElementById('message');
             messageEl.textContent = text;
-            setTimeout(() => {
-                messageEl.textContent = '';
-            }, 3000);
+            setTimeout(() => { messageEl.textContent = ''; }, 3000);
         }
 
-        // Set up event listeners for color inputs
-        // 'input' fires while dragging the color picker for live preview
-        // 'change' fires when the color picker is closed to auto-save
         document.getElementById('groupBtnColor').addEventListener('input', function(e) {
             document.getElementById('groupBtnText').value = e.target.value;
             updatePreviews();
@@ -312,7 +334,6 @@
         });
         document.getElementById('newGameBtnColor').addEventListener('change', saveColors);
 
-        // Load colors on page load
         loadColors();
     </script>
 </body>
