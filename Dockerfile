@@ -16,6 +16,8 @@ COPY . .
 # Production stage - use nginx to serve static files
 FROM nginx:alpine
 
+LABEL org.opencontainers.image.source=https://github.com/brooksmcmillin/connections
+
 # Copy custom nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
